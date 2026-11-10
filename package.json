@@ -1,0 +1,17 @@
+{
+  "name": "content-planner",
+  "version": "1.0.0",
+  "description": "Social media content planner dashboard dengan login user + superadmin",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "prod": "NODE_ENV=production node server.js"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "express": "^4.22.3"
+  }
+}

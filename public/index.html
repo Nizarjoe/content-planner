@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Content Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=4">
+</head>
+<body>
+
+<!-- ============ LOGIN / REGISTER ============ -->
+<div id="authScreen" class="auth-screen" style="display:none">
+  <div class="auth-card">
+    <div class="auth-logo"><div class="auth-badge">CP</div><h1>Content Planner</h1></div>
+    <p class="auth-sub">Kelola konten mediasosialmu dalam satu tempat.</p>
+    <form id="loginForm">
+      <label for="a-user">Username atau email</label>
+      <input class="input" id="a-user" required autocomplete="username">
+      <label for="a-pass">Kata sandi</label>
+      <input class="input" id="a-pass" type="password" required autocomplete="current-password">
+      <div class="err" id="authErr"></div>
+      <button class="btn btn-primary btn-block" type="submit">Masuk</button>
+    </form>
+    <p class="auth-switch">Belum punya akun? <a href="#" id="showReg">Daftar</a></p>
+    <form id="regForm" style="display:none">
+      <label for="r-name">Nama lengkap</label>
+      <input class="input" id="r-name" required>
+      <label for="r-user">Username</label>
+      <input class="input" id="r-user" required pattern="[a-zA-Z0-9_.]{3,30}">
+      <label for="r-email">Email (opsional)</label>
+      <input class="input" id="r-email" type="email">
+      <label for="r-pass">Kata sandi (min. 8 karakter)</label>
+      <input class="input" id="r-pass" type="password" required minlength="8">
+      <div class="err" id="regErr"></div>
+      <button class="btn btn-primary btn-block" type="submit">Daftar</button>
+    </form>
+    <p class="auth-switch" id="regSwitch" style="display:none">Sudah punya akun? <a href="#" id="showLogin">Masuk</a></p>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="appScreen" style="display:none">
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-user">
+      <div class="avatar" id="sbAvatar">A</div>
+      <div><b id="sbName">—</b><span id="sbRole">—</span></div>
+    </div>
+    <nav class="sb-nav" id="sbNav">
+      <a href="#/dashboard" class="on" data-icon="🏠">Beranda</a>
+      <a href="#/konten" data-icon="🗂">Konten <span class="cnt" id="cntKonten">0</span></a>
+      <a href="#/campaign" data-icon="📣">Campaign</a>
+      <a href="#/ideabank" data-icon="💡">Idea Bank <span class="cnt" id="cntIdea">0</span></a>
+      <a href="#/resources" data-icon="📁">Resources</a>
+      <a href="#/kalender" data-icon="📅">Kalender</a>
+      <a href="#/autopost" data-icon="⚡">Auto Post</a>
+      <a href="#/analytics" data-icon="📈">Analytics</a>
+      <a href="#/akun" data-icon="👤">Akun</a>
+    </nav>
+    <div class="sb-note">
+      <div class="note-head">📝 Catatan</div>
+      <div id="noteList" class="note-list"><p class="muted small">Belum ada catatan.</p></div>
+      <form id="noteForm"><input class="input" id="noteInput" placeholder="Tulis catatan…"><button class="btn btn-primary btn-sm" type="submit">Simpan</button></form>
+    </div>
+    <div class="sb-footer">
+      <div class="sb-user">
+        <div class="avatar" id="sbAvatar2">A</div>
+        <div><b id="sbName2">—</b><span id="sbUser2">—</span></div>
+      </div>
+      <div class="sb-foot-actions">
+        <button class="icon-btn" id="settingsBtn" title="Pengaturan akun">⚙️</button>
+        <button class="icon-btn" id="adminBtn" title="Panel Admin" style="display:none">🛡️</button>
+        <button class="icon-btn" id="logoutBtn" title="Keluar">🚪</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div>
+        <h1 id="helloName">Halo! 👋</h1>
+        <span class="topbar-sub" id="helloSub">Selamat datang kembali</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="themeBtn" title="Mode terang/gelap">🌙</button>
+        <div class="searchbox"><span>🔍</span><input id="globalSearch" placeholder="Cari konten…"></div>
+        <div class="stat-chips">
+          <span class="chip chip-fire" title="Streak">🔥 <b id="streakVal">0</b></span>
+          <span class="chip" title="Poin">💎 <b id="pointsVal">0</b></span>
+        </div>
+        <button class="btn btn-primary" id="newContentBtn">+ Konten baru</button>
+        <button class="icon-btn menu-toggle" id="menuToggle">☰</button>
+      </div>
+    </header>
+
+    <main id="view" class="view"></main>
+  </div>
+</div>
+
+<!-- ============ MODALS ============ -->
+<div class="modal-back" id="modalBack">
+  <div class="modal" id="modalBody"><!-- injected --></div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="/app.js?v=6"></script>
+</body>
+</html>
